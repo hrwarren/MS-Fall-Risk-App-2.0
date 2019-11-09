@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BottomNavBar</string>
     <string name="appbar_scrolling_view_behavior">AppbarScrollingViewBehavior</string>
+    <string name="action_one_text">Action One</string>
+    <string name="action_two_text">Action Two</string>
+    <string name="action_three_text">Action Three</string>
+    <string name="action_four_text">Action Four</string>
 </resources>

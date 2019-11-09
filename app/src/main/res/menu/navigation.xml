@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_one"
+        android:icon="@drawable/cake_dark"
+        android:title="@string/action_one_text"/>
+
+    <item
+        android:id="@+id/action_two"
+        android:icon="@drawable/checkbox_dark"
+        android:title="@string/action_two_text"/>
+
+    <item
+        android:id="@+id/action_three"
+        android:icon="@drawable/bus_dark"
+        android:title="@string/action_three_text"/>
+
+    <item
+        android:id="@+id/action_four"
+        android:icon="@drawable/explore_dark"
+        android:title="@string/action_four_text"/>
+
+</menu>
