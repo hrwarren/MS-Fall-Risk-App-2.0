@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BottomNavBar</string>
+    <string name="appbar_scrolling_view_behavior">AppbarScrollingViewBehavior</string>
+</resources>
