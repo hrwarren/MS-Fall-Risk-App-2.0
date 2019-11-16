@@ -1,4 +1,4 @@
-package com.example.bottomnavbar;
+package com.example.mhealth_build;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
