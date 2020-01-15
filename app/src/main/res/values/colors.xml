@@ -8,4 +8,5 @@
     <color name="darkRed">#440000</color>
     <color name="darkGreen">#004400</color>
     <color name="darkBlue">#000044</color>
+    <color name="black">#000000</color>
 </resources>

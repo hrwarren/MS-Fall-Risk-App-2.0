@@ -1,22 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkGray"
-    android:gravity="center"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/action_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:text="@string/action_two_text"
-        android:textColor="@color/white"
-        android:textSize="36sp"
-        android:typeface="normal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/graph1">
 
-</LinearLayout>
+
+<!--            <TextView-->
+<!--                android:id="@+id/title24hrs"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Fall Risk Over 24 Hrs" />-->
+
+            <!--            <com.jjoe64.graphview.helper.GraphViewXML-->
+<!--                android:id="@+id/graph_24hrs"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="200dip"-->
+<!--                app:seriesData="0=5;2=5;3=0;4=2"-->
+<!--                app:seriesType="line"-->
+<!--                app:seriesColor="#00cc00"-->
+<!--                app:seriesTitle="Foobar"-->
+<!--                android:title="Graph Title" />-->
+
+
+            <TextView
+                android:id="@+id/hr24_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="Fall Risk Over Last 24 Hrs"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/graph_24hrs"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graph_24hrs"
+                android:layout_width="match_parent"
+                android:layout_height="200dip"
+                android:layout_marginTop="20dp"
+                android:title="24 Hrs"
+                app:seriesColor="#00cc00"
+                app:seriesData="0=5;2=5;3=0;4=2"
+                app:seriesTitle="Foobar"
+                app:seriesType="line" />
+
+
+
+            <TextView
+                android:id="@+id/wk_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="Fall Risk Over Last 7 Days"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/graph_1wk"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graph_1wk"
+                android:layout_width="match_parent"
+                android:layout_height="200dip"
+                android:layout_marginTop="50dp"
+                android:title="1 Wk"
+                app:seriesColor="#00cc00"
+                app:seriesData="0=5;2=5;3=0;4=2"
+                app:seriesTitle="Foobar"
+                app:seriesType="line"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="255dp" />
+
+            <TextView
+                android:id="@+id/mo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="Fall Risk Over Last 1 Month"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/graph_1mo"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graph_1mo"
+                android:layout_width="match_parent"
+                android:layout_height="200dip"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="100dp"
+                android:title="1 mo"
+                app:seriesColor="#00cc00"
+                app:seriesData="0=5;2=5;3=0;4=2"
+                app:seriesTitle="Foobar"
+                app:seriesType="line"
+                tools:layout_editor_absoluteX="16dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
