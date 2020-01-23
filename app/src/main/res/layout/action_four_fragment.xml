@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/header_1"
+        android:id="@+id/btn_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -18,30 +18,30 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/header_2"
+        android:id="@+id/btn_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/falling_biomechanics"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/header_1"
+        app:layout_constraintTop_toBottomOf="@id/btn_1"
         android:layout_marginTop="8dp"/>
 
     <Button
-        android:id="@+id/header_3"
+        android:id="@+id/btn_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/about_the_app"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/header_2"
+        app:layout_constraintTop_toBottomOf="@id/btn_2"
         android:layout_marginTop="8dp"/>
 
     <Button
-        android:id="@+id/header_4"
+        android:id="@+id/btn_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/msense_group"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/header_3"
+        app:layout_constraintTop_toBottomOf="@id/btn_3"
         android:layout_marginTop="8dp"/>
 
 

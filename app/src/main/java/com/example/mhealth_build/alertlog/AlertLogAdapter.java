@@ -1,4 +1,4 @@
-package com.example.mhealth_build;
+package com.example.mhealth_build.alertlog;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mhealth_build.R;
 
 import java.util.List;
 

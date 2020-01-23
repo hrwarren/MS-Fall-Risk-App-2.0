@@ -5,8 +5,15 @@
     <string name="action_two_text">Dashboard</string>
     <string name="action_three_text">Notifications</string>
     <string name="action_four_text">About</string>
+
     <string name="multiple_sclerosis">Multiple Sclerosis</string>
     <string name="falling_biomechanics">Falling Biomechanics</string>
     <string name="about_the_app">The App</string>
     <string name="msense_group">M-Sense Group</string>
+
+    <string name="abt_app_txt"> Can this contain a lot of text? Can it contain a newline?
+        Yes, it can. Adding a 2nd line like this should work.
+        It should not cause parsing errors.
+    </string>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.example.mhealth_build;
+package com.example.mhealth_build.alertlog;
 
 import java.util.ArrayList;
 
