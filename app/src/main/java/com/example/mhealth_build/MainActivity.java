@@ -11,6 +11,11 @@ import com.example.mhealth_build.alertlog.ActionThreeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+
+
+
+
     public final static String TAG = "BottomNavBar";
 
     BottomNavigationView mBottomNavigationView;

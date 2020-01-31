@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:baselineAligned="false"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:layout_marginTop="100dp"
+    >
+
+    <TextView
+        android:id="@+id/about_ms_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_weight="1"
+        android:text="Can this contain a lot of text? Can it contain a newline?
+        Yes, it can. Adding a 2nd line like this should work. It should not cause parsing errors." />
+
+<!--    <TextView-->
+<!--        android:id="@+id/about_ms_2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="1"-->
+<!--        android:text="And another row? Does this show up?" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/about_ms_3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="1"-->
+<!--        android:text="How about now?" />-->
+
+</LinearLayout>

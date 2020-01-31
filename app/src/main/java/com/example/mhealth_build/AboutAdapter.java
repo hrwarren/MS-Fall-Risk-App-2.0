@@ -1,6 +1,5 @@
 package com.example.mhealth_build;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +13,17 @@ import java.util.ArrayList;
 public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder>{
 
 
+    private Context mContext;
+    private ArrayList<AboutModel> mStoreAboutModelArrayList;
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView aboutTextView;
+
         public ViewHolder(View itemView) {
             super(itemView);
-
+            aboutTextView = (TextView) itemView.findViewById(R.id.about_app_txt);
         }
     }
 
@@ -27,20 +33,27 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder>{
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the chosen layout
-        View alertView = inflater.inflate(R.layout.about_popup, parent, false);
+        View aboutView = inflater.inflate(R.layout.abt_app_info, parent, false);
 
         // Return new holder instance
-        ViewHolder viewHolder = new ViewHolder(alertView);
+        ViewHolder viewHolder = new ViewHolder(aboutView);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        final MyText item = getValueAt(position);
-        MyAdapter.MyCartViewHolder myCartViewHolder = (MyAdapter.MyCartViewHolder)holder;
-        if (item != null) {
-            setupValuesInWidgets(myCartViewHolder, item);
-        }
+    public void onBindViewHolder(AboutAdapter.ViewHolder viewHolder, int position) {
+        AboutModel item = getValueAt(position);
+        TextView textView = viewHolder.aboutTextView;
+        textView.setText(item.getTitle());
+    }
+
+    private AboutModel getValueAt(int position) {
+        return mStoreAboutModelArrayList.get(position);
+    }
+
+    @Override
+    public int getItemCount(){
+        return mStoreAboutModelArrayList.size();
     }
 
 
