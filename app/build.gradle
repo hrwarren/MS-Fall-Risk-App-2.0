@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -32,4 +36,5 @@ dependencies {
 
     // implementation rootProject.ext.metawearSdk
     implementation 'com.mbientlab.bletoolbox:scanner:0.2.3'
+    implementation 'com.mbientlab:metawear:3.7.1'
 }
