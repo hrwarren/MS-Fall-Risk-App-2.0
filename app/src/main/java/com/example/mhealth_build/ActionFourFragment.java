@@ -118,7 +118,5 @@ public class ActionFourFragment extends Fragment implements View.OnClickListener
 
 
 
-    public static Fragment newInstance() {
-        return new ActionFourFragment();
-    }
+    public static Fragment newInstance() { return new ActionFourFragment(); }
 }

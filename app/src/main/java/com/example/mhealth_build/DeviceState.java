@@ -16,6 +16,7 @@ public class DeviceState {
         this.zVal = null;
     }
 
+
     @Override
     public boolean equals(Object obj) {
 

@@ -11,6 +11,8 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,7 +44,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
     // Initialize map that contains each bluetooth device as well as bind bluetooth service
     private final HashMap<DeviceState, MetaWearBoard> stateToBoards;
     private BtleService.LocalBinder binder;
-    private ConnectedDeviceAdapter connectedDevices= null;
+    private ConnectedDeviceAdapter connectedDevices = null;
     public SensorConnectionFragment() {
         stateToBoards = new HashMap<>();
     }
@@ -76,7 +78,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
         Log.i("metawear","MAF: Atempting to connect to  "+newDeviceState);
 
         // For progress bar
-        newDeviceState.connecting= true;
+        newDeviceState.connecting = true;
 
         // Add device to connected device adapter class as well as add to hashmap
         connectedDevices.add(newDeviceState);
@@ -184,14 +186,20 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
         connectedDevices= new ConnectedDeviceAdapter(getActivity(), R.id.sensor_list);
         connectedDevices.setNotifyOnChange(true);
         setRetainInstance(true);
-        View view = inflater.inflate(R.layout.action_one_fragment, container, false);
+        View view = inflater.inflate(R.layout.connector_fragment, container, false); //not sure connector_fragment is what goes there!!!
+
+
+        RecyclerView rvConnnectedDevices = (RecyclerView) view.findViewById(R.id.connected_devices);
+
+
+
         return view;
     }
 
     // once view is created, can be called multiple times
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        ListView connectedDevicesView= view.findViewById(R.id.connected_devices);
+        RecyclerView connectedDevicesView= view.findViewById(R.id.connected_devices); //originally ListView, that's what's breaking everything
         connectedDevicesView.setAdapter(connectedDevices);
 
         // if you click on item, it will vibrate:
@@ -238,6 +246,10 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
     // method called for reconnection
     public static Task<Void> reconnect(final MetaWearBoard board) {
         return board.connectAsync().continueWithTask(task -> task.isFaulted() ? reconnect(board) : task);
+    }
+
+    public static Fragment newInstance() {
+        return new SensorConnectionFragment();
     }
 
 }

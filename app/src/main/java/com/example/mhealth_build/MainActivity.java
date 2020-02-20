@@ -93,7 +93,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void openFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().add(R.id.container, fragment).commit();
+        fm.beginTransaction().replace(R.id.container, fragment).commit();
+
     }
+
+    //this was the original; I think it just kept adding fragments on top of each other
+//    private void openFragment(Fragment fragment) {
+//        FragmentManager fm = getSupportFragmentManager(); //getFragmentManager vs getSupportFragmentManager
+//        fm.beginTransaction().add(R.id.container, fragment).commit();
+//    }
+
+    
 
 }

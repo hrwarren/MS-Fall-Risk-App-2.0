@@ -21,13 +21,13 @@
 <!--        android:orientation="vertical"-->
 <!--        tools:context=".MainActivity">-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/connected_devices"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/sensorBtn"
-        app:layout_constraintTop_toBottomOf="@+id/divider3"
-        tools:layout_editor_absoluteX="-38dp" />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/connected_devices"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/sensorBtn"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/divider3"-->
+<!--        tools:layout_editor_absoluteX="-38dp" />-->
 
 
     <TextView
