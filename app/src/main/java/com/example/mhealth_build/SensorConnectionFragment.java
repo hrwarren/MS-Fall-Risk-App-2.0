@@ -32,6 +32,8 @@ import com.mbientlab.metawear.module.AccelerometerBosch;
 import com.mbientlab.metawear.module.AccelerometerMma8452q;
 import com.mbientlab.metawear.module.Debug;
 import com.mbientlab.metawear.module.Haptic;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import bolts.Capture;
 import bolts.Continuation;
@@ -44,7 +46,9 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
     // Initialize map that contains each bluetooth device as well as bind bluetooth service
     private final HashMap<DeviceState, MetaWearBoard> stateToBoards;
     private BtleService.LocalBinder binder;
-    private ConnectedDeviceAdapter connectedDevices = null;
+    private ConnectedDeviceAdapter connectedDevicesAdapter = null; //formerly connectedDevices
+    private ArrayList<DeviceState> connectedDevices;
+
     public SensorConnectionFragment() {
         stateToBoards = new HashMap<>();
     }
@@ -81,7 +85,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
         newDeviceState.connecting = true;
 
         // Add device to connected device adapter class as well as add to hashmap
-        connectedDevices.add(newDeviceState);
+        connectedDevices.add(newDeviceState); //adding to array, not adapter right now
         stateToBoards.put(newDeviceState, newBoard);
 
         // initalize captures
@@ -114,7 +118,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
 
             getActivity().runOnUiThread(() -> {
                 newDeviceState.connecting= false;
-                connectedDevices.notifyDataSetChanged();
+                // connectedDevices.notifyDataSetChanged();
             });
 
 
@@ -150,7 +154,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
                     newDeviceState.yVal = s.substring(15,21);
                     newDeviceState.zVal = s.substring(27,32);
 
-                    connectedDevices.notifyDataSetChanged();
+                    // connectedDevices.notifyDataSetChanged();
 
                 });
             }));
@@ -183,8 +187,8 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
     // Create fragment view, called once
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        connectedDevices= new ConnectedDeviceAdapter(getActivity(), R.id.sensor_list);
-        connectedDevices.setNotifyOnChange(true);
+        connectedDevicesAdapter= new ConnectedDeviceAdapter(getActivity(), R.id.sensor_list);
+        // connectedDevices.setNotifyOnChange(true);
         setRetainInstance(true);
         View view = inflater.inflate(R.layout.connector_fragment, container, false); //not sure connector_fragment is what goes there!!!
 
@@ -200,7 +204,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         RecyclerView connectedDevicesView= view.findViewById(R.id.connected_devices); //originally ListView, that's what's breaking everything
-        connectedDevicesView.setAdapter(connectedDevices);
+        connectedDevicesView.setAdapter(connectedDevicesAdapter);
 
         // if you click on item, it will vibrate:
         connectedDevicesView.setOnItemClickListener((parent, view1, position, id) -> {
