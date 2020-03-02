@@ -11,6 +11,7 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -35,6 +36,8 @@ import com.mbientlab.metawear.module.Haptic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 import bolts.Capture;
 import bolts.Continuation;
 import bolts.Task;
@@ -48,6 +51,8 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
     private BtleService.LocalBinder binder;
     private ConnectedDeviceAdapter connectedDevicesAdapter = null; //formerly connectedDevices
     private ArrayList<DeviceState> connectedDevices;
+    private RecyclerView mConnectedDevicesView;
+    private ConnectedDeviceAdapter mAdapter;
 
     public SensorConnectionFragment() {
         stateToBoards = new HashMap<>();
@@ -56,6 +61,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
     // For parsing accelerometer data within method "add new device"
     private String s;
 
+/*-------------- jdh -------->
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Log.i("metawear","MAF: View Created");
@@ -64,7 +70,33 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
 
         // bind bluetooth service
         owner.getApplicationContext().bindService(new Intent(owner, BtleService.class), this, Context.BIND_AUTO_CREATE);
+    }
+-------------- jdh ---------*/
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        Log.i("JDH", "SensorConnectionFragment.onCreateView()");
+        View view = inflater.inflate(R.layout.connector_fragment, container, false);
+        mConnectedDevicesView = view.findViewById(R.id.devices_recycler_view);
+        mConnectedDevicesView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        setRetainInstance(true);
+        updateUI();
+        return view;
+    }
+
+
+    private void updateUI() {
+        DeviceStore deviceStore = DeviceStore.get(getActivity());
+        List<DeviceState> devices = deviceStore.getDevices();
+
+        if (mAdapter == null) {
+            mAdapter = new ConnectedDeviceAdapter(devices);
+            mAdapter.setContext(getActivity());
+            mConnectedDevicesView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     // Unbind btle service on app closure or back navigation
@@ -184,27 +216,27 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
     };
 
 
+/*--------------- jdh -------------------->
     // Create fragment view, called once
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        connectedDevicesAdapter= new ConnectedDeviceAdapter(getActivity(), R.id.sensor_list);
+        //jdh connectedDevicesAdapter= new ConnectedDeviceAdapter(getActivity(), R.id.sensor_list);
         // connectedDevices.setNotifyOnChange(true);
         setRetainInstance(true);
         View view = inflater.inflate(R.layout.connector_fragment, container, false); //not sure connector_fragment is what goes there!!!
-
-
         RecyclerView rvConnnectedDevices = (RecyclerView) view.findViewById(R.id.connected_devices);
-
-
-
         return view;
     }
+---------------- jdh ------------------*/
 
+/*-------------- jdh -------------------?
     // once view is created, can be called multiple times
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         RecyclerView connectedDevicesView= view.findViewById(R.id.connected_devices); //originally ListView, that's what's breaking everything
         connectedDevicesView.setAdapter(connectedDevicesAdapter);
+
+        Log.i("JDH", "onViewCreated() in SensorConnectionFragment");
 
         // if you click on item, it will vibrate:
         connectedDevicesView.setOnItemClickListener((parent, view1, position, id) -> {
@@ -222,7 +254,9 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
             newBoard.getModule(Haptic.class).startMotor(50.f, (short) 1000);
 
         });
+----------------- jdh ------------*/
 
+/*-------------- jdh -------------->
         // if you click on the item and hold for a while, it will disconnect, probably don't need this code, but also helpful if you connect to the wrong board by accident
         connectedDevicesView.setOnItemLongClickListener((parent, view1, position, id) -> {
             DeviceState current= connectedDevices.getItem(position);
@@ -234,7 +268,10 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
             connectedDevices.remove(current);
             return false;
         });
+
     }
+----------------- jdh ---------------*/
+
 
     // necessary to establish bluetooth service connection
     @Override

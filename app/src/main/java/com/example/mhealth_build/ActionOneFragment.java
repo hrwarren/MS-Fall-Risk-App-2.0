@@ -1,5 +1,6 @@
 package com.example.mhealth_build;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -73,8 +74,10 @@ public class ActionOneFragment extends Fragment implements View.OnClickListener 
 
         switch (v.getId()) {
             case R.id.sensorBtn:
-                mFragment = SensorConnectionFragment.newInstance(); //normally SensorConnectionFragment
-                openFragment(mFragment);
+//jdh                mFragment = SensorConnectionFragment.newInstance(); //normally SensorConnectionFragment
+//jdh                openFragment(mFragment);
+                Intent intent = new Intent(getActivity(), SensorConnectionActivity.class);
+                startActivity(intent);
                 break;
 
         }
