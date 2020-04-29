@@ -16,16 +16,20 @@ import java.util.List;
 // how to actually do any of this:
 // https://guides.codepath.com/android/using-the-recyclerview
 
+// This the adapter for the alert log's recyclerview
+// It is what handles the addition and display of items in the recyclerview itself
+
 public class AlertLogAdapter extends
         RecyclerView.Adapter<AlertLogAdapter.ViewHolder>{
 
+    // Initialize the recyclerview's viewholder, i.e. the class responsible for displaying each
+    // item in the recyclerview
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView alertlogTextView;
         public Button msgButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             alertlogTextView = (TextView) itemView.findViewById(R.id.alert_title);
             msgButton = (Button) itemView.findViewById(R.id.msg_button);
 
@@ -42,11 +46,17 @@ public class AlertLogAdapter extends
     }
 
     @Override
+    // What to do when the viewholder is first created
     public AlertLogAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        // Provide context for the adapter
+        // As far as I understand, this means telling it that it was born in AlertLogAdapter,
+        // which is called in ActivityThreeFragment, which is running by the grace of MainActivity,
+        // and giving it access to all the data therein
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        // Inflate the chosen layout
+        // Inflate the layout for the alert message
         View alertView = inflater.inflate(R.layout.item_alertmsg, parent, false);
 
         // Return new holder instance
@@ -57,10 +67,16 @@ public class AlertLogAdapter extends
     // Populating data into item through holder
     @Override
     public void onBindViewHolder(AlertLogAdapter.ViewHolder viewHolder, int position) {
+
+        // Initialize a member of logged alerts
         AlertLog loggedAlert = mLoggedAlerts.get(position);
 
+        // Declare the textviews for the alert's content and title
         TextView textView = viewHolder.alertlogTextView;
         textView.setText(loggedAlert.getTitle());
+
+        // Initialize a button that is pressable when the alert is a fall risk alert, but
+        // is greyed out when it's a battery alert
         Button button = viewHolder.msgButton;
         button.setText(loggedAlert.isRiskAlert() ? "Fall Risk" : "Low Battery");
         button.setEnabled(loggedAlert.isRiskAlert());

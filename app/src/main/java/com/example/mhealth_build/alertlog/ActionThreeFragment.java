@@ -16,8 +16,11 @@ import java.util.ArrayList;
 
 import static com.example.mhealth_build.MainActivity.TAG;
 
+// This class opens the fragment that displays all of the logged fall alerts.
+
 public class ActionThreeFragment extends Fragment {
 
+    // Initialize the array list that will display the logged fall alerts
     ArrayList<AlertLog> loggedAlerts;
 
     @Override
@@ -30,24 +33,28 @@ public class ActionThreeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.i(TAG, "ActionThreeFragment.onCreateview()");
+
+        // Open the action 3 fragment as our current view
         View v = inflater.inflate(R.layout.action_three_fragment, container, false);
 
-        // Get a reference to RecyclerView
+        // Get a reference to the alert log's RecyclerView
         RecyclerView rvAlertLog = (RecyclerView) v.findViewById(R.id.rvAlertLog);
 
 
-        // Do I need a layout manager?
-
+        // Right now, this generates a set number of alerts to populate the wireframe of this screen.
+        // Real alerts will be logged once we can properly create them
         loggedAlerts = AlertLog.createAlertLog(20);
 
+        // initialize an adapter
         AlertLogAdapter adapter = new AlertLogAdapter(loggedAlerts);
 
+        // set the adapter as the adapter for this screen
         rvAlertLog.setAdapter(adapter);
 
         rvAlertLog.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // return the action3 fragment view
         return v;
-        //return rvAlertLog;
     }
 
     public static Fragment newInstance() {

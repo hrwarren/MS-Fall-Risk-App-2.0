@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_weight="1"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     tools:context=".MainActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
 
     <TextView
-        android:id="@+id/about_app_txt"
-        android:layout_width="138dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="96dp"
-        android:layout_weight="1"
-        android:text="Blah? Blah blah blah?"
+        android:id="@+id/app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="About the App"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/abt_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="This app helps you take balance into your own hands by alerting you when you may be about to fall. Based on your biomechanics at the time of the alert, it will offer suggestions on how to change your gait and posture in order to improve your stability. It also keeps track of your fall risk over time, from the last hour to the last month. Maintaining a record of this can help you identify trends in your fall risk throughout the days and weeks. This app is NOT a medical treatment and DOES NOT guarantee fall prevention."
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_title"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

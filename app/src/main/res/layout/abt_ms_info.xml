@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_weight="1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:baselineAligned="false"
-    android:paddingTop="12dp"
-    android:paddingBottom="12dp"
-    android:layout_marginTop="100dp"
+    android:orientation="vertical"
     >
 
     <TextView
         android:id="@+id/about_ms_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_weight="1"
-        android:text="Can this contain a lot of text? Can it contain a newline?
-        Yes, it can. Adding a 2nd line like this should work. It should not cause parsing errors." />
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Multiple Sclerosis" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/about_ms_2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_weight="1"-->
-<!--        android:text="And another row? Does this show up?" />-->
+    <TextView
+        android:id="@+id/abt_fbm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="Multiple sclerosis (MS) is a progressive disease in which the immune system attacks the myelin sheath, a protective layer around nerve fiber. This interferes with the brain’s ability to communicate with the peripheral nervous system, causing a wide range of symptoms. For some, the condition is continually present. For others, it is relapsing/remitting, which means it can come in episodes with periods of normal health in between. Although two people have the same experience with MS, many experience symptoms that increase fall risk, including fatigue, tingling and numbness, dizziness, and balance problems. "
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about_ms_1" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/about_ms_3"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_weight="1"-->
-<!--        android:text="How about now?" />-->
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

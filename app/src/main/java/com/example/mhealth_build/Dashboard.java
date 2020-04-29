@@ -25,6 +25,7 @@ public class Dashboard {
 
     private static String title;
 
+    // creates the list of graphs seen in ActionTwo
     public static ArrayList<Dashboard> createDashboard(int graphType) {
         ArrayList<Dashboard> graphs = new ArrayList<Dashboard>();
 
@@ -37,6 +38,8 @@ public class Dashboard {
                 title = "1 week";
             } else if (graphType == 3) {
                 title = "1 month";
+            }else if (graphType == 4) {
+                title = "1 year";
             }
 
             graphs.add(new Dashboard(title, graphType));

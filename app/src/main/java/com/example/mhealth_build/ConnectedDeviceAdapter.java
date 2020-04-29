@@ -67,12 +67,14 @@ public class ConnectedDeviceAdapter extends RecyclerView.Adapter<DeviceHolder> {
 
     @Override
     public DeviceHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // provide context for the adapter
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View convertView = inflater.inflate(R.layout.sensor_list, parent, false);
 
-        //jdh ViewHolder viewHolder = new ViewHolder(convertView);
+        // inflate layout for device visual
         DeviceHolder viewHolder = new DeviceHolder(inflater, parent);
+
+        // return new holder instance
         viewHolder.setContext(mContext);
         return viewHolder;
     }
@@ -80,7 +82,7 @@ public class ConnectedDeviceAdapter extends RecyclerView.Adapter<DeviceHolder> {
     @Override
     public void onBindViewHolder(DeviceHolder viewHolder, int position) {
 
-//
+//        The viewholders for displaying x, y, and z accel values, currently commented out
 //        viewHolder = new ViewHolder(convertView);
 //        viewHolder.deviceAddress = convertView.findViewById(R.id.status_mac_address);
 //        viewHolder.sensorLoco = convertView.findViewById(R.id.sensorLoco);
@@ -91,6 +93,8 @@ public class ConnectedDeviceAdapter extends RecyclerView.Adapter<DeviceHolder> {
 //        viewHolder.connectingProgress = convertView.findViewById(R.id.connecting_progress);
 //
         Log.i("JDH", "onBindViewHolder, position = " + position);
+
+        // determine the position in the list of each device
         DeviceState state = mConnectedDevices.get(position);
         viewHolder.bind(state);
 
@@ -132,81 +136,4 @@ public class ConnectedDeviceAdapter extends RecyclerView.Adapter<DeviceHolder> {
         return count;
     }
 
-//
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        ViewHolder viewHolder;
-//
-//
-//
-//        if (convertView == null) {
-//            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.sensor_list, parent, false);
-//
-//            viewHolder = new ViewHolder(convertView);
-//            viewHolder.deviceAddress = convertView.findViewById(R.id.status_mac_address);
-//            viewHolder.sensorLoco = convertView.findViewById(R.id.sensorLoco);
-//            viewHolder.xVal = convertView.findViewById(R.id.xVal);
-//            viewHolder.yVal = convertView.findViewById(R.id.yVal);
-//            viewHolder.zVal = convertView.findViewById(R.id.zVal);
-//            viewHolder.connectingText = convertView.findViewById(R.id.text_connecting);
-//            viewHolder.connectingProgress = convertView.findViewById(R.id.connecting_progress);
-//
-//            convertView.setTag(viewHolder);
-//        } else {
-//            viewHolder = (ViewHolder) convertView.getTag();
-//
-//        }
-//
-//
-//        DeviceState state = mConnectedDevices.get(position);
-//
-//        // Set position name based on order of connection, will be automated in a future version using calibration process
-//        if (position <= 0) {
-//            viewHolder.sensorLoco.setText("Medial Chest");
-//        } else {
-//            viewHolder.sensorLoco.setText("Anterior Thigh");
-//        }
-//
-//        // set the last two characters of the device address to text view
-//        viewHolder.deviceAddress.setText(state.btDevice.getAddress().substring(15, 17));
-//
-//        // holds state of connection for progress bar, once connected shows x, y, z components of accel
-//        if (state.connecting) {
-//            viewHolder.connectingProgress.setVisibility(View.VISIBLE);
-//            viewHolder.connectingText.setVisibility(View.VISIBLE);
-//        } else {
-//            viewHolder.xVal.setVisibility(View.VISIBLE);
-//            viewHolder.yVal.setVisibility(View.VISIBLE);
-//            viewHolder.zVal.setVisibility(View.VISIBLE);
-//            if (state.xVal != null) {
-//                viewHolder.xVal.setText(state.xVal);
-//                viewHolder.yVal.setText(state.yVal);
-//                viewHolder.zVal.setText(state.zVal);
-//            }
-//            viewHolder.connectingProgress.setVisibility(View.GONE);
-//            viewHolder.connectingText.setVisibility(View.GONE);
-//        }
-//        return convertView;
-//    }
 }
-//
-
-//
-
-
-//
-//
-    // updates the elements that are not static (x,y,z components of accel)
-//    public void update(DeviceState newState) {
-//        int pos = getPosition(newState);
-//        if (pos == -1) {
-//            add(newState);
-//        } else {
-//            DeviceState current = getItem(pos);
-//        }
-//    }
-
-//    public int getItemCount() {
-//        return state.length;
-//    }
-//
-//}

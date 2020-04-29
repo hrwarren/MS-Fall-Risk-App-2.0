@@ -17,11 +17,10 @@ public class DeviceStore {
     }
 
     private DeviceStore(Context context) {
+        // adding bluetooth devices to the array that gets displayed in the sensor connection screen
         mDevices = new ArrayList<>();
         for (int i=0; i<4; ++i) {
             DeviceState device = new DeviceState("device " + i);
-//            device.setTitle("Crime #" + i);
-//            dev.setSolved(i%2 == 0);
             mDevices.add(device);
         }
     }

@@ -28,6 +28,7 @@ public class DeviceState {
         this.name = name;
     }
 
+    // get x,y,z values to display as strings
     public String getX() {
         return this.xVal;
     }

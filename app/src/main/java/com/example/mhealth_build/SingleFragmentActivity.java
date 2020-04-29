@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 public abstract class SingleFragmentActivity extends AppCompatActivity {
     protected abstract Fragment createFragment();
 
+    // this makes a container for the sensor connection fragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -26,8 +26,10 @@ import static com.example.mhealth_build.MainActivity.TAG;
 
 public class ActionOneFragment extends Fragment implements View.OnClickListener {
 
+    // initialize member variable of fragment
     private Fragment mFragment = null;
 
+    // initialize graphs and graph variables
     LineGraphSeries<DataPoint> series;
 
     private final Handler mHandler = new Handler();
@@ -46,12 +48,15 @@ public class ActionOneFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.i(TAG, "ActionOneFragment.onCreateview()");
+
+        // open the action 1 fragment as our current view
         View v = inflater.inflate(R.layout.action_one_fragment, container, false);
 
-        //Listener for button to lead to sensor connection
+        // listener for button to lead to sensor connection
         Button btn = (Button) v.findViewById(R.id.sensorBtn);
         btn.setOnClickListener(this); // calling onClick() method
 
+        // display the fall risk graph
         GraphView hrGraph = (GraphView) v.findViewById(R.id.graph_1hr);
         series = new LineGraphSeries();
 
@@ -65,17 +70,17 @@ public class ActionOneFragment extends Fragment implements View.OnClickListener 
         viewport3.scrollToEnd();
         viewport3.setScalable(true);
 
-
+        // return the current view
         return v;
     }
 
     @Override
+    // This is the listener for the button that opens to the sensor connection screen
     public void onClick(View v) {
 
         switch (v.getId()) {
             case R.id.sensorBtn:
-//jdh                mFragment = SensorConnectionFragment.newInstance(); //normally SensorConnectionFragment
-//jdh                openFragment(mFragment);
+                // open a new intent for the sensor connection activity
                 Intent intent = new Intent(getActivity(), SensorConnectionActivity.class);
                 startActivity(intent);
                 break;
@@ -83,13 +88,14 @@ public class ActionOneFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    // Return the action 1 fragment
     public static Fragment newInstance () { //should this be static or not?
         return new ActionOneFragment();
     }
 
-    private void openFragment (Fragment fragment){
-        FragmentManager fm = getFragmentManager(); //should this be getSupportFragmentManager?
-        fm.beginTransaction().add(R.id.container, fragment).commit();
-    }
+//    private void openFragment (Fragment fragment){
+//        FragmentManager fm = getFragmentManager(); //should this be getSupportFragmentManager?
+//        fm.beginTransaction().add(R.id.container, fragment).commit();
+//    }
 
 }

@@ -9,21 +9,11 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
-import android.widget.TextView;
-
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 
 import static com.example.mhealth_build.MainActivity.TAG;
 
 public class ActionFourFragment extends Fragment implements View.OnClickListener {
-
-//    private RecyclerView recyclerView;
-//    private RecyclerView.LayoutManager layoutManager;
-//    private AboutAdapter abtAdapter;
-//    private ArrayList<AboutModel> aboutModelArrayList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +27,7 @@ public class ActionFourFragment extends Fragment implements View.OnClickListener
         Log.i(TAG, "ActionFourFragment.onCreateview()");
         View v = inflater.inflate(R.layout.action_four_fragment, container, false);
 
+        // Initialize all of the buttons available in this view
         Button btn_1 = (Button)v.findViewById(R.id.btn_1);
         btn_1.setOnClickListener(this); // calling onClick() method
         Button btn_2 = (Button)v.findViewById(R.id.btn_2);
@@ -51,13 +42,19 @@ public class ActionFourFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v){
-        int pwnum;
 
-
+        // Switch for determining what happens upon each button press
+        // Each button inflates its own popup
         switch (v.getId()) {
             case R.id.btn_1:
+
+                // Makes a view out of the chosen layout
                 View pv1 = LayoutInflater.from(getActivity()).inflate(R.layout.abt_ms_info, null);
+
+                // Creates a popup window using the above view
                 final PopupWindow window1 = new PopupWindow(pv1, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
+                // Makes sure that nothing goes amiss when the user touches the popup itself
                 window1.setOutsideTouchable(true);
                 window1.setTouchable(false);
                 window1.showAsDropDown(pv1, Gravity.CENTER, 10, 0);
@@ -90,7 +87,9 @@ public class ActionFourFragment extends Fragment implements View.OnClickListener
         }
 
 
-//
+// Experimental code for trying to get the popup view to not take up the whole screen
+// Once again, I probably should get rid of it, but I am a code hoarder
+
 //        View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.abt_app_info, null);
 //        final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 //        popupWindow.setOutsideTouchable(true);

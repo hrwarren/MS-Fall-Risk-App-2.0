@@ -11,6 +11,7 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 
@@ -44,7 +46,7 @@ import bolts.Task;
 
 
 
-public class SensorConnectionFragment extends Fragment implements ServiceConnection {
+public class SensorConnectionFragment extends Fragment implements ServiceConnection, View.OnClickListener{
 
     // Initialize map that contains each bluetooth device as well as bind bluetooth service
     private final HashMap<DeviceState, MetaWearBoard> stateToBoards;
@@ -54,12 +56,18 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
     private RecyclerView mConnectedDevicesView;
     private ConnectedDeviceAdapter mAdapter;
 
+    Fragment mFragment = null;
+
     public SensorConnectionFragment() {
         stateToBoards = new HashMap<>();
     }
 
     // For parsing accelerometer data within method "add new device"
     private String s;
+
+
+    // All the bluetooth content was commented out by Dr. Jason Hibbeler, who has been helping me
+    // with this project. If it doesn't go here though, I'm not sure where it goes.
 
 /*-------------- jdh -------->
     @Override
@@ -78,6 +86,10 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
                              Bundle savedInstanceState) {
         Log.i("JDH", "SensorConnectionFragment.onCreateView()");
         View view = inflater.inflate(R.layout.connector_fragment, container, false);
+
+        Button back_btn = (Button) view.findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(this); // calling onClick() method
+
         mConnectedDevicesView = view.findViewById(R.id.devices_recycler_view);
         mConnectedDevicesView.setLayoutManager(new LinearLayoutManager(getActivity()));
         setRetainInstance(true);
@@ -125,7 +137,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
         final Capture<Accelerometer> accelCapture = new Capture<>();
 
 
-        // On undexpected disconnect, attempt to reconnect to device
+        // On unexpected disconnect, attempt to reconnect to device
         newBoard.onUnexpectedDisconnect(status -> {
             Log.i("metawear","MAF: Unexpected Disconnect Detected");
             Log.i("metawear","MAF: Connection lost, reconnecting to " + btDevice.getAddress());
@@ -282,6 +294,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
+        // What to actually do when bluetooth service is disconnected?
     }
 
     // method called for reconnection
@@ -289,8 +302,29 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
         return board.connectAsync().continueWithTask(task -> task.isFaulted() ? reconnect(board) : task);
     }
 
+    // give a new instance of the sensor connection fragment
     public static Fragment newInstance() {
         return new SensorConnectionFragment();
+    }
+
+
+
+    // This is what lets you navigate back to the home page from this sensor connection activity
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.back_btn:
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+
+
+                break;
+
+
+
+            //how to destroy SensorConnectionActivity once we leave?
+
+        }
     }
 
 }
@@ -298,6 +332,7 @@ public class SensorConnectionFragment extends Fragment implements ServiceConnect
 
 
 
+// old bluetooth connection code:
 
 //package com.example.mhealth_build;
 //

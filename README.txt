@@ -1,0 +1,3 @@
+This is the source code for the android app of University of Vermont SEED 2019/20 project #14: an mHealth Fall Prevention System for Persons with Multiple Sclerosis. 
+
+It was developed by Haley Warren with significant assistance from Dr. Jason Hibbeler, who provided the framework for the bottom navigation bar and the sensor connection fragment. It was also modeled after and built off of the work from the previous year's UVM SEED team (2018/19).
