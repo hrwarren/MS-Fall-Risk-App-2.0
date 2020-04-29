@@ -1,10 +1,12 @@
-package com.example.mhealth_build;
+package com.example.mhealth_build.sensorConnection;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
+import com.example.mhealth_build.R;
 
 public abstract class SingleFragmentActivity extends AppCompatActivity {
     protected abstract Fragment createFragment();

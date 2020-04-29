@@ -1,4 +1,4 @@
-package com.example.mhealth_build;
+package com.example.mhealth_build.sensorConnection;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mhealth_build.R;
 
 public class DeviceHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     TextView deviceAddress, connectingText, xVal, yVal, zVal, sensorLoco;

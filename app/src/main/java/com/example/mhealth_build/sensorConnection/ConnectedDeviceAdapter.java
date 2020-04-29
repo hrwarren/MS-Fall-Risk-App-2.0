@@ -1,19 +1,16 @@
-package com.example.mhealth_build;
+package com.example.mhealth_build.sensorConnection;
 // Array adapter hold information about each device connection as well as displaying it on the screen
 
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.mhealth_build.sensorConnection.DeviceHolder;
+import com.example.mhealth_build.sensorConnection.DeviceState;
+
 import java.util.List;
 
 

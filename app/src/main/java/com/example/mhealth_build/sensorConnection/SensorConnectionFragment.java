@@ -1,17 +1,16 @@
-package com.example.mhealth_build;
+package com.example.mhealth_build.sensorConnection;
 // This fragment handles the connection with the bluetooth devices and communicates with the array adapter where they are kept track of
 
-import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import androidx.annotation.Nullable;
+
+import com.example.mhealth_build.MainActivity;
+import com.example.mhealth_build.R;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,10 +20,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 
 
-import com.example.mhealth_build.DeviceState;
 import com.mbientlab.metawear.AsyncDataProducer;
 import com.mbientlab.metawear.MetaWearBoard;
 import com.mbientlab.metawear.Route;
@@ -33,8 +30,6 @@ import com.mbientlab.metawear.data.Acceleration;
 import com.mbientlab.metawear.module.Accelerometer;
 import com.mbientlab.metawear.module.AccelerometerBosch;
 import com.mbientlab.metawear.module.AccelerometerMma8452q;
-import com.mbientlab.metawear.module.Debug;
-import com.mbientlab.metawear.module.Haptic;
 
 import java.util.ArrayList;
 import java.util.HashMap;

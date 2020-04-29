@@ -1,6 +1,5 @@
-package com.example.mhealth_build;
+package com.example.mhealth_build.sensorConnection;
 
-import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 
 import java.util.ArrayList;

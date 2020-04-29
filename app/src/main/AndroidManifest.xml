@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SensorConnectionActivity">
+        <activity android:name=".sensorConnection.SensorConnectionActivity">
         </activity>
 
     </application>

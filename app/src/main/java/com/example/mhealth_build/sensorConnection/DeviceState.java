@@ -1,4 +1,4 @@
-package com.example.mhealth_build;
+package com.example.mhealth_build.sensorConnection;
 
 import android.bluetooth.BluetoothDevice;
 

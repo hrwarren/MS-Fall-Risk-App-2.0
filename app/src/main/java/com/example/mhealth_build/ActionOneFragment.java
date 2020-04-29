@@ -10,17 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
+import com.example.mhealth_build.sensorConnection.SensorConnectionActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.Viewport;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.PointsGraphSeries;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static com.example.mhealth_build.MainActivity.TAG;
 
